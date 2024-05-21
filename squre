@@ -1,0 +1,18 @@
+from skyfield.api import load
+
+# Load planetary data
+ts = load.timescale()
+eph = load('de421.bsp')
+
+# Define the date and time
+t = ts.utc(2021, 10, 10)
+
+# Get the position of Mars
+mars = eph['mars barycenter']
+position = mars.at(t).position.km
+
+# Calculate the square of the distance from the Sun
+distance_from_sun = position. magnitude. km
+square_of_distance = distance_from_sun ** 2
+
+print("Square of the distance of Mars from the Sun on October 10, 2021:", square_of_distance)
